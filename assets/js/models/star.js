@@ -2,7 +2,7 @@ function Star(ctx){
     this.ctx = ctx;
     
     this.x = this.ctx.canvas.width; //here it is
-    this.y = this.ctx.canvas.height -100;
+    this.y = this.ctx.canvas.height - 100;
     this.y0 = this.y;  // careful with the y0 before the var y declaration
 
     this.w = 40;

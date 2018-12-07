@@ -4,12 +4,13 @@ function Character(ctx){
     this.x = 50;
     this.y = this.ctx.canvas.height -100;
 
-    if (this.state = "alive") {
+    this.life = 100;
+
+    this.state = "alive";
+   
     this.y0 = this.y;  // careful with the y0 before the var y declaration 
-    } else {
-        this.y = this.y;
     
-    }
+       
     this.w = 50;
     this.h = 70;
 
@@ -24,18 +25,18 @@ function Character(ctx){
     this.img.frameIndex = 0;
     this.frameCounter = 0;
 
-    this.life = 100;
-    if (this.life < 0 ){
-    this.state = "alive";
-    } else{
-        this.state = "death";
-    }
+   
     
     
 };
 
+Character.prototype.falls = function() {
+
+}
+
 
 Character.prototype.draw = function() {
+    if (this.state === "alive") {
     this.ctx.drawImage(
         this.img,
         this.img.frameIndex * Math.floor(this.img.width / this.img.frames),
@@ -48,6 +49,23 @@ Character.prototype.draw = function() {
         this.h);
         
         this.animate();
+    } else {
+        this.img.src = "./assets/imgs/ghost-d.png";
+        this.img.frames = 3;
+        this.ctx.drawImage(
+            this.img,
+            this.img.frameIndex * Math.floor(this.img.width / this.img.frames),
+            0,
+            this.img.width / this.img.frames,
+            this.img.height/4,
+            this.x,
+            this.y,
+            this.w,
+            this.h);
+            
+            //this.animate();
+
+    }
     
 };
 
@@ -145,5 +163,9 @@ Character.prototype.onKeyDown = function(event) {
         console.log("caught");
     }
 
+    // Character.prototype.death = function() {
+    //     this.img.src = "./assets/imgs/ghost-d.png";
+        
+    // }
     
 

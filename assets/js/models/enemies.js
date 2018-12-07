@@ -18,6 +18,8 @@ function Enemy(ctx){
     this.img.frames = 2;
     this.img.frameIndex = 0;
     this.frameCounter = 0;
+
+    this.state = "non exploded"
 };
 
 
@@ -26,6 +28,7 @@ function Enemy(ctx){
 
 
 Enemy.prototype.draw = function() {
+    if (this.state === "non exploded") {
     this.ctx.drawImage(
         this.img,
         this.img.frameIndex * Math.floor(this.img.width / this.img.frames),
@@ -38,7 +41,28 @@ Enemy.prototype.draw = function() {
         this.h);
         
         this.animate();
-    
+    } else if (this.state === "exploded" ){
+        this.img.src = "./assets/imgs/explosion.png";
+        this.img.frames = 8;
+        this.w = 170;
+        this.h = 170;
+        this.y = this.ctx.canvas.height -140;
+        this.x -= 3;
+        
+        this.ctx.drawImage(
+            this.img,
+            this.img.frameIndex * Math.floor(this.img.width / this.img.frames),
+            0,
+            this.img.width / this.img.frames,
+            this.img.height,
+            this.x,
+            this.y,
+            this.w,
+            this.h);
+            
+            this.animate();
+            
+    }
 };
 
 Enemy.prototype.animate = function() {
@@ -66,3 +90,7 @@ Enemy.prototype.move = function() {
       
       
 };
+
+Enemy.prototype.explode = function() {
+    this.state = "exploded";
+}
