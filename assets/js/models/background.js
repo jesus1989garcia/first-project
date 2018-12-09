@@ -7,7 +7,9 @@ function Background(ctx){
     this.w = this.ctx.canvas.width;
     this.h = this.ctx.canvas.height;
 
-    this.vx = -4;
+    this.acceleration = 1;
+    this.vx = - 3;
+    
 
     this.img = new Image();
     this.img.src = "./assets/imgs/ruins.jpg"
@@ -25,3 +27,8 @@ if (this.x + this.w <= 0 ){
 
 }
 };
+
+Background.prototype.accelerate = function() {
+    this.acceleration += 0.01;
+    this.vx = -3 * this.acceleration;
+}

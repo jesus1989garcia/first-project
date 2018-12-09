@@ -11,6 +11,9 @@ function Panels (ctx) {
 Panels.prototype.draw = function() {
 this.ctx.drawImage(this.img, this.x, this.y, 400, 150);
 this.ctx.font = "30px Georgia black";
-    this.ctx.fillText("Points: " + points, 80 , 140);
+    this.ctx.save();
+    this.ctx.fillStyle = "#996633"
+    this.ctx.fillText("Points: " + points, 100 , 140);
+    this.ctx.restore();
     
 }

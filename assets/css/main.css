@@ -1,0 +1,28 @@
+#wrapper {
+  background-image: url("../imgs/nuclear.jpg");
+  background-repeat: no-repeat;
+  background-color: black;
+  height: 500px;
+  width: 1300px;
+  background-size: cover;
+  text-align: center;
+  vertical-align: middle;
+  
+}
+
+#play {
+  font: 40px arial bold;
+  color: #99ff33;
+  margin-top: 25%;
+  height:100px; 
+  width:200px; 
+  background-color: #ff3300;
+  border-radius: 5px;
+  border-color: #e6e600;
+  /*margin: -20px -50px; 
+  position:relative;
+  top:50%; 
+  left:50%;
+   */
+
+}

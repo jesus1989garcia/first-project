@@ -92,9 +92,12 @@ Character.prototype.move = function() {
         this.vy = 0;
       }
 
-      if (this.x >= this.ctx.canvas.width - this.w || this.x - this.w <= 0 ) {
-          this.vx *= -2;
-
+      if (this.x >= this.ctx.canvas.width - this.w){ 
+          this.x = this.x - this.w;
+          //this.vx *= -1;
+      }if  (this.x - this.w <= 0 ) {
+          this.x = this.x + this.w;
+        //this.vx *= - 1;
       }
        
 
@@ -107,7 +110,7 @@ Character.prototype.jump = function() {
 
     if (!this.inAir()){
         this.vy -= 16;
-
+       jumpSound.play();
     }
 };
 Character.prototype.inAir = function() {
@@ -125,7 +128,7 @@ Character.prototype.onKeyDown = function(event) {
         this.x += this.vx;
         break;
       case KEY_LEFT:
-        this.vx = -3;
+        this.vx = -5;
         break;
     }
     
@@ -159,9 +162,9 @@ Character.prototype.onKeyDown = function(event) {
         console.log("hit")
     }
 
-    Character.prototype.inmune = function() {
-        console.log("caught");
-    }
+    // Character.prototype.inmune = function() {
+    //     console.log("caught");
+    // }
 
     // Character.prototype.death = function() {
     //     this.img.src = "./assets/imgs/ghost-d.png";

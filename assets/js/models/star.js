@@ -8,7 +8,7 @@ function Star(ctx){
     this.w = 40;
     this.h = 40;
 
-    this.vx = -0.5;
+    this.vx = - 3 * ACCELERATION;
     this.vy = 0;
     
 

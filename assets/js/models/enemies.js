@@ -8,7 +8,7 @@ function Enemy(ctx){
     this.w = 50;
     this.h = 70;
 
-    this.vx = -1;
+    this.vx = -3 * ACCELERATION;
     this.vy = 0;
     
 

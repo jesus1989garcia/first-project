@@ -26,3 +26,9 @@ LifeBar.prototype.decrease = function() {
   }
 
 }
+
+LifeBar.prototype.increase = function() {
+  if (this.w < 300 ) {
+    this.w += 60;
+  }
+}

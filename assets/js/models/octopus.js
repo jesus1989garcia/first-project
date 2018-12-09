@@ -2,7 +2,7 @@ function Octopus(ctx){
   this.ctx = ctx;
   
   this.x = this.ctx.canvas.width; //here it is
-  this.y = this.ctx.canvas.height - 400;
+  //this.y = this.ctx.canvas.height - 400;
   //this.y0 = this.y;  // careful with the y0 before the var y declaration
 
   this.y = Math.floor(Math.random() * this.ctx.canvas.height/2);
@@ -10,9 +10,9 @@ function Octopus(ctx){
   this.w = 150;
   this.h = 70;
 
-  this.vx = -5;
+  this.vx = -5 * ACCELERATION;
   this.vy = 0;
-  this.gravity = 0.1;
+  this.gravity = 0.008;
   this.gravitySpeed = 0;
   this.bounce = 1;
   

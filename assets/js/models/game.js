@@ -7,6 +7,7 @@ function Game( canvas ) {
     this.setListener();
 
     this.items = [];
+    this.beans = [];
 
     
     this.enemies = [];
@@ -28,11 +29,14 @@ function Game( canvas ) {
 
 Game.prototype.start = function() {
 this.intervalId = setInterval(function() {
+    
     this.clear();
     this.drawAll();
     this.moveAll();
     this.checkGameOver();
     if (this.isHit()){
+        explosion.play();
+        
         this.character.bounce();
         if (this.character.life > 0 ){
         this.damage = 5;
@@ -44,6 +48,7 @@ this.intervalId = setInterval(function() {
         console.log("life " + this.character.life)
     }
     if (this.missileHit()){
+        explosion.play();
         if(this.character.life > 0 ){
             this.damage = 5;
             this.character.life -= this.damage;
@@ -72,8 +77,25 @@ this.intervalId = setInterval(function() {
       if (this.character.collision(item)) {
         item.state = "taken";
         points += 20;
+        coinSound.play();
       }
      }.bind(this)); 
+
+     this.beans.forEach(function(bean){
+        if (this.character.collision(bean)) {
+          bean.state = "taken";
+          yummy.play();
+          
+          if (this.character.life <= 100 ){
+            this.character.life += 20;
+            this.lifeBar.increase();
+            if (this.character.life > 100){
+                this.character.life = 100;
+            }
+          }
+        }
+       }.bind(this)); 
+
 }.bind(this),1000/60);
 };
 
@@ -122,6 +144,10 @@ Game.prototype.addItem = function() {
     var star = new Star (this.ctx);
     this.items.push(star);
 }
+Game.prototype.addBean = function() {
+    var bean = new Bean (this.ctx);
+    this.beans.push(bean);
+}
 
 Game.prototype.drawAll = function( element ) {
     this.bg.draw();
@@ -141,11 +167,28 @@ Game.prototype.drawAll = function( element ) {
         octo.draw();
     });
 
+    this.beans.forEach( function(bean) {
+        bean.draw();
+    });
+
     this.ctx.fillText("Life " + this.character.life + "%", this.ctx.canvas.width - 800, 60);
     this.drawCount++;
-    var enemyWave = Math.floor(Math.random()*1000 + 5);
-    var octopWave = Math.floor(Math.random() * 1000 + 5);
+    var beanAppear = Math.floor(Math.random()*1000 + 400 )
+    var enemyWave = Math.floor(Math.random()*1000 + 100);
+    var octopWave = Math.floor(Math.random() * 1000 );
     var itemAppear = Math.floor(Math.random()*1000 + 100 );
+
+    if (this.drawCount % 100 === 0){
+        levelUp();
+        this.bg.accelerate();
+        console.log("bg speed" + this.bg.acceleration)
+        console.log("enemies speed" + ACCELERATION)
+    }
+
+    if (this.drawCount % beanAppear === 0) {
+        this.addBean();
+        console.log("bean added");
+    }
     if (this.drawCount % itemAppear === 0){
         this.addItem();
         console.log(this.items.length)
@@ -179,6 +222,12 @@ Game.prototype.drawAll = function( element ) {
     this.items = this.items.filter( function(star){
         return star.state != "taken";  //doesnt work with != "not taken" for some reason
     });
+    this.beans = this.beans.filter( function(bean) {
+        return bean.x + bean.w > 0;
+    });
+    this.beans = this.beans.filter( function(bean) {
+        return bean.state != "taken";
+    })
 
 };
 Game.prototype.checkGameOver = function() {
@@ -194,6 +243,9 @@ Game.prototype.checkGameOver = function() {
         setTimeout(function(){
             this.stop(); 
     }.bind(this),3000);
+         setTimeout (function(){
+             location.reload();
+         },4000)
             }
         }
     }
@@ -216,6 +268,19 @@ this.items.forEach(function(item){
 this.octops.forEach(function(octo){
     octo.move();
 });
+this.beans.forEach( function(bean) {
+    bean.move();
+})
 }
 
 
+Game.prototype.music = function() {
+    heMan.play();
+    setTimeout( function(){
+        barbie.play();
+
+    },130000)
+    setTimeout( function(){
+        takeOnMe.play();
+    },323000)
+}
