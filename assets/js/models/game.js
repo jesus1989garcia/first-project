@@ -76,7 +76,7 @@ this.intervalId = setInterval(function() {
     this.items.forEach(function(item){
       if (this.character.collision(item)) {
         item.state = "taken";
-        points += 20;
+        points += 200;
         coinSound.play();
       }
      }.bind(this)); 

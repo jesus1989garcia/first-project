@@ -1,5 +1,5 @@
 var points = 1;
  window.setInterval(function () {
-     points += 200;
+     points += 15;
  },1000);
 
