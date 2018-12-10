@@ -170,7 +170,7 @@ Game.prototype.drawAll = function( element ) {
     this.drawCount++;
     var beanAppear = Math.floor(Math.random()*1000 + 400 )
     var enemyWave = Math.floor(Math.random()* 2000);
-    var octopWave = Math.floor(Math.random() * 1000 + 50);
+    var octopWave = Math.floor(Math.random() * 2000);
     var itemAppear = Math.floor(Math.random()*1000 + 100 );
 
     if (this.drawCount % 100 === 0){
@@ -237,7 +237,7 @@ Game.prototype.checkGameOver = function() {
         
         setTimeout(function(){
             this.stop(); 
-    }.bind(this),3000);
+    }.bind(this),1500);
          setTimeout (function(){
              location.reload();
          },4000)
