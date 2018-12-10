@@ -11,7 +11,7 @@ function Game( canvas ) {
 
     
     this.enemies = [];
-    //this.addEnemy();
+    
     this.octops = [];
 
     this.drawCount = 0;
@@ -104,12 +104,7 @@ Game.prototype.stop = function() {
     clearInterval(this.intervalId);
     this.intervalId = undefined;
 }
-/*Game.prototype.eliminate = function() {
-    this.items.forEach(function(item){
-        items.slice(indexOf.item,1);
-        
-    })
-}*/
+
  
 
 Game.prototype.isHit = function() {
@@ -174,8 +169,8 @@ Game.prototype.drawAll = function( element ) {
     this.ctx.fillText("Life " + this.character.life + "%", this.ctx.canvas.width - 800, 60);
     this.drawCount++;
     var beanAppear = Math.floor(Math.random()*1000 + 400 )
-    var enemyWave = Math.floor(Math.random()*1000 + 100);
-    var octopWave = Math.floor(Math.random() * 1000 );
+    var enemyWave = Math.floor(Math.random()* 2000);
+    var octopWave = Math.floor(Math.random() * 1000 + 50);
     var itemAppear = Math.floor(Math.random()*1000 + 100 );
 
     if (this.drawCount % 100 === 0){

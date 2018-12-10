@@ -15,8 +15,11 @@ LifeBar.prototype.draw = function() {
 
   this.ctx.fillStyle = "green";
   this.ctx.fillRect(this.x, this.y, this.w, this.h);
-  this.ctx.strokeStyle = "#FF0000"
+  this.ctx.strokeStyle = "black";
   this.ctx.restore();
+  //this.ctx.stroke(this.x, this.y, this.w, this.h);
+  
+
   ;
 }
 

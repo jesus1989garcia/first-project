@@ -1,5 +1,10 @@
+
+body {
+  background-color: #000000;
+}
+
 #wrapper {
-  background-image: url("../imgs/nuclear.jpg");
+  background-image: url("../imgs/nuclearB.jpg");
   background-repeat: no-repeat;
   background-color: black;
   height: 500px;
@@ -12,17 +17,14 @@
 
 #play {
   font: 40px arial bold;
-  color: #99ff33;
+  color: #a0cf04;
   margin-top: 25%;
   height:100px; 
   width:200px; 
-  background-color: #ff3300;
+  background-color: #72031be1;
   border-radius: 5px;
   border-color: #e6e600;
-  /*margin: -20px -50px; 
-  position:relative;
-  top:50%; 
-  left:50%;
-   */
+  box-shadow: 7px 5px #262722 ;
+  
 
 }

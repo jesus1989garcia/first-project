@@ -29,6 +29,6 @@ if (this.x + this.w <= 0 ){
 };
 
 Background.prototype.accelerate = function() {
-    this.acceleration += 0.01;
+    this.acceleration += 0.05;
     this.vx = -3 * this.acceleration;
 }

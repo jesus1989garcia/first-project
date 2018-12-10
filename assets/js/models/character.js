@@ -162,13 +162,5 @@ Character.prototype.onKeyDown = function(event) {
         console.log("hit")
     }
 
-    // Character.prototype.inmune = function() {
-    //     console.log("caught");
-    // }
-
-    // Character.prototype.death = function() {
-    //     this.img.src = "./assets/imgs/ghost-d.png";
-        
-    // }
     
 

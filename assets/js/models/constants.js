@@ -1,5 +1,5 @@
 
 
 function levelUp(){
-  ACCELERATION += 0.01;
+  ACCELERATION += 0.05;
 }
